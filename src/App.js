@@ -1,28 +1,26 @@
-import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
+import {useState} from "react";
 
 function App() {
-    const items = [
-        {
-            id: 1,
-            label: 'Can i use react in project',
-            content: 'You can use react on any project you want'
-        },
-        {
-            id: 2,
-            label: 'Can i use javascript in project',
-            content: 'You can use javascript on any project you want'
-        },
-        {
-            id: 3,
-            label: 'Can i use Angular in project',
-            content: 'You can use Angular on any project you want'
-        },
-    ]
+    const [selection, setSelection] = useState(null);
 
+    const handleSelect = (option) => {
+        setSelection(option);
+    }
+
+    const options = [
+        {
+            label: 'Red', value: 'red'
+        },
+        {
+            label: 'Green', value: 'green'
+        },
+        {
+            label: 'Blue', value: 'blue'
+        }
+    ]
     return (
-        <div>
-            <Accordion items={items}/>
-        </div>
+        <div><Dropdown options={options} value={selection} onChange={handleSelect}/></div>
     )
 }
 
